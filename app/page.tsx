@@ -1,13 +1,14 @@
 import Photo from "@/components/photo";
 import Social from "@/components/social";
+import Stats from "@/components/stats";
 import { Button } from "@/components/ui/button";
 import { FiDownload } from "react-icons/fi";
 
 
 const Home = () => {
   return (
-    <section className="h-full">
-      <div className="container mx-auto h-full">
+    <section className="h-full -mt-10">
+      <div className="container mx-auto pt-0">
         <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-8 xl:pb-24 ">
           {/* text */}
           <div className="text-center xl:text-left order-2 xl:order-none">
@@ -17,8 +18,8 @@ const Home = () => {
               <span className="h1 text-accent">Alejandro A.</span>
             </div>
             <p className="max-w-[400px] mb-9 mt-6 text-white/80">
-              I&apos;m a passionate blockchain developer with expertise in
-              building decentralized applications and smart contracts.
+              Crafting innovative solutions through decentralized applications 
+              and smart contracts for the Web3 ecosystem.
             </p>
             <div className="flex flex-col xl:flex-row items-center gap-8">
               <Button variant="outline" size="lg" className="uppercase flex items-center gap-2 bg-transparent border-[#00ff99] text-[#00ff99] hover:bg-[#00ff99] hover:text-black cursor-pointer">
@@ -36,6 +37,8 @@ const Home = () => {
           </div>
         </div>
       </div>
+      {/* stats */}
+      <Stats />
     </section>
   );
 };

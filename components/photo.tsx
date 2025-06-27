@@ -15,10 +15,10 @@ const Photo = () => {
   if (!isMounted) {
     return (
       <div className="relative w-full h-full flex justify-center items-center">
-        <div className="relative">
+        <div className="relative flex justify-center items-center">
           {/* Círculo estático para el estado no montado */}
           <svg
-            className="absolute inset-0 w-[320px] h-[320px] xl:w-[520px] xl:h-[520px]"
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] xl:w-[520px] xl:h-[520px]"
             viewBox="0 0 520 520"
           >
             <circle
@@ -34,13 +34,13 @@ const Photo = () => {
           </svg>
           
           {/* Imagen */}
-          <div className="w-[298px] h-[298px] xl:w-[498px] xl:h-[498px] mixed-blend-lighten relative z-10">
+          <div className="w-[298px] h-[298px] xl:w-[498px] xl:h-[498px] relative z-10 flex justify-center items-center">
             <Image
               src="/assets/alejandro.png"
               alt="Home Developer Photo"
               width={498}
               height={498}
-              className="object-contain"
+              className="object-contain w-full h-full"
               priority 
               quality={100}
             />
@@ -52,10 +52,10 @@ const Photo = () => {
 
   return (
     <div className="relative w-full h-full flex justify-center items-center">
-        <motion.div className="relative">
+        <motion.div className="relative flex justify-center items-center">
             {/* Círculo animado con borde discontinuo */}
             <motion.svg
-              className="absolute inset-0 w-[320px] h-[320px] xl:w-[520px] xl:h-[520px]"
+              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] xl:w-[520px] xl:h-[520px]"
               viewBox="0 0 520 520"
               initial={{ rotate: 0 }}
               animate={{ rotate: 360 }}
@@ -103,13 +103,13 @@ const Photo = () => {
             </motion.svg>
             
             {/* Imagen */}
-            <div className="w-[298px] h-[298px] xl:w-[498px] xl:h-[498px] mixed-blend-lighten relative z-10">
+            <div className="w-[298px] h-[298px] xl:w-[498px] xl:h-[498px] relative z-10 flex justify-center items-center">
                 <Image
                     src="/assets/alejandro.png"
                     alt="Home Developer Photo"
                     width={498}
                     height={498}
-                    className="object-contain"
+                    className="object-contain w-full h-full"
                     priority 
                     quality={100}
                 />

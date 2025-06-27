@@ -34,7 +34,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${jetBrainsMono.variable} font-[family-name:var(--font-jetbrains-mono)] bg-primary text-white antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${jetBrainsMono.variable} font-[family-name:var(--font-jetbrains-mono)] bg-primary text-white antialiased overflow-x-hidden`}
+        suppressHydrationWarning={true}
       >
         <Header />
         <StairTransition></StairTransition>
