@@ -78,12 +78,12 @@ const education = {
         {
             institution: "Udemy",
             degree: "Angular Testing, Angular 17",
-            duration: "2022 - 2023",
+            duration: "2023",
         },
         {
             institution: "Udemy",
             degree: "MEAN Stack E-commerce, Angular 15, Nx, PrimeNG",
-            duration: "2022 - 2023",
+            duration: "2023",
         },
         {
             institution: "IFP Barcelona",
