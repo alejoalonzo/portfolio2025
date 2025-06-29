@@ -1,9 +1,9 @@
-import { FiGithub, FiLinkedin } from "react-icons/fi";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import Link from "next/link";
 
 const socials = [
-    { icon: <FiGithub  />, path: "https://github.com/alejoalonzo" },
-    { icon: <FiLinkedin  />, path: "https://www.linkedin.com/in/alejandro-alonzo-69639a38/" }
+    { icon: <FaGithub  />, path: "https://github.com/alejoalonzo" },
+    { icon: <FaLinkedin  />, path: "https://www.linkedin.com/in/alejandro-alonzo-69639a38/" }
 ]
 
 interface SocialProps {

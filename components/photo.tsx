@@ -18,7 +18,7 @@ const Photo = () => {
         <div className="relative flex justify-center items-center">
           {/* Círculo estático para el estado no montado */}
           <svg
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] xl:w-[520px] xl:h-[520px]"
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] xl:w-[520px] xl:h-[520px] z-20"
             viewBox="0 0 520 520"
           >
             <circle
@@ -34,7 +34,7 @@ const Photo = () => {
           </svg>
           
           {/* Imagen */}
-          <div className="w-[298px] h-[298px] xl:w-[498px] xl:h-[498px] relative z-10 flex justify-center items-center">
+          <div className="w-[298px] h-[298px] xl:w-[498px] xl:h-[498px] relative z-10 flex justify-center items-center transform -translate-y-2 xl:translate-y-0">
             <Image
               src="/assets/alejandro.png"
               alt="Home Developer Photo"
@@ -55,7 +55,7 @@ const Photo = () => {
         <motion.div className="relative flex justify-center items-center">
             {/* Círculo animado con borde discontinuo */}
             <motion.svg
-              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] xl:w-[520px] xl:h-[520px]"
+              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] xl:w-[520px] xl:h-[520px] z-20"
               viewBox="0 0 520 520"
               initial={{ rotate: 0 }}
               animate={{ rotate: 360 }}
@@ -103,7 +103,7 @@ const Photo = () => {
             </motion.svg>
             
             {/* Imagen */}
-            <div className="w-[298px] h-[298px] xl:w-[498px] xl:h-[498px] relative z-10 flex justify-center items-center">
+            <div className="w-[298px] h-[298px] xl:w-[498px] xl:h-[498px] relative z-10 flex justify-center items-center transform -translate-y-2 xl:translate-y-0">
                 <Image
                     src="/assets/alejandro.png"
                     alt="Home Developer Photo"
