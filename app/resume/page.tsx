@@ -148,7 +148,7 @@ const ResumePage = () => {
         className='min-h-[80vh] flex items-center justify-center py-12 xl:py-0 -mt-20 xl:mt-0'
         >
             <div className="container mx-auto">
-                <Tabs defaultValue="experience" className="flex flex-col xl:flex-row gap-[60px]">
+                <Tabs defaultValue="experience" className="flex flex-col xl:flex-row gap-[60px] px-5 xl:px-0">
                     <TabsList className='flex flex-col w-full max-w-[380px] mx-auto xl:mx-0 gap-6'>
                         <TabsTrigger value="experience" className="w-full py-3 data-[state=active]:bg-[#00ff99] data-[state=active]:text-primary">Experience</TabsTrigger>
                         <TabsTrigger value="education" className="w-full py-3 data-[state=active]:bg-[#00ff99] data-[state=active]:text-primary">Education</TabsTrigger>

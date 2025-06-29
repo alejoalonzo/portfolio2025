@@ -109,7 +109,7 @@ const ContactPage = () => {
             )}
 
             <div className="container mx-auto">
-                <div className="flex flex-col xl:flex-row gab-[30px]">
+                <div className="flex flex-col xl:flex-row gab-[30px] px-5 xl:px-0">
                     <div className="xl:h-[54%] order-2 xl:order-none"> 
                         {/* form */}
                         <form onSubmit={handleSubmit} className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
@@ -153,7 +153,7 @@ const ContactPage = () => {
                                     </SelectGroup>
                                 </SelectContent>
                             </Select>
-                            <Button type="submit" className="max-w-40" disabled={isLoading}>
+                            <Button type="submit" className="max-w-40 w-40" disabled={isLoading}>
                                 {isLoading ? 'Sending...' : 'Send Message'}
                             </Button>
                         </form>

@@ -134,9 +134,16 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    box-sizing: border-box;
   }
   body {
     @apply bg-background text-foreground;
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+  html {
+    overflow-x: hidden;
+    max-width: 100vw;
   }
   .h1{
     @apply text-[48px] xl:text-[80px] leading-[1.1] font-semibold;
@@ -152,8 +159,9 @@
 
 /* Mobile margin for all pages */
 @media (max-width: 1279px) {
-  body {
-    margin-left: 10px;
-    margin-right: 10px;
+
+  
+  * {
+    max-width: 100%;
   }
 }

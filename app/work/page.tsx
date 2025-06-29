@@ -61,7 +61,7 @@ const WorkPage = () => {
         >
             <div className="container mx-auto">
                 <div className="flex flex-col xl:flex-row xl:gap-[30px]">
-                    <div className="w-full xl:w-1/2 xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none gap-6 xl:gap-0">
+                    <div className="w-full xl:w-1/2 xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none gap-6 xl:gap-0 px-5 xl:px-0">
                         {/* outline number */}
                         <div className="text-8xl leading-none font-extrabold text-transparent" style={{WebkitTextStroke: '1px white'}}>
                             {project.num}
