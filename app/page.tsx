@@ -1,3 +1,5 @@
+"use client";
+
 import Photo from "@/components/photo";
 import Social from "@/components/social";
 import Stats from "@/components/stats";
@@ -6,6 +8,15 @@ import { FiDownload } from "react-icons/fi";
 
 
 const Home = () => {
+  const handleDownloadCV = () => {
+    const link = document.createElement('a');
+    link.href = '/assets/ResumeAlejandro.pdf'; 
+    link.download = 'Alejandro_Alonzo_Resume.pdf'; 
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <section className="h-full -mt-10">
       <div className="container mx-auto pt-0">
@@ -22,9 +33,14 @@ const Home = () => {
               and smart contracts for the Web3 ecosystem.
             </p>
             <div className="flex flex-col xl:flex-row items-center gap-8">
-              <Button variant="outline" size="lg" className="uppercase flex items-center gap-2 bg-transparent border-[#00ff99] text-[#00ff99] hover:bg-[#00ff99] hover:text-black cursor-pointer">
-                    Download CV
-                    <FiDownload className="text-xl" />
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="uppercase flex items-center gap-2 bg-transparent border-[#00ff99] text-[#00ff99] hover:bg-[#00ff99] hover:text-black cursor-pointer"
+                onClick={handleDownloadCV}
+              >
+                Download CV
+                <FiDownload className="text-xl" />
               </Button>
               <div className="mb-8 xl:mb-0">
                 <Social containerStyles="flex gap-6" iconStyles="w-10 h-10 border border-[#00ff99] bg-transparent rounded-full flex justify-center items-center text-[#00ff99] text-xl hover:bg-[#00ff99] hover:text-black"/>

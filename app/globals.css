@@ -149,3 +149,11 @@
   }
 
 }
+
+/* Mobile margin for all pages */
+@media (max-width: 1279px) {
+  body {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
