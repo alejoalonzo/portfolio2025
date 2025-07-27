@@ -157,7 +157,7 @@ const WorkPage = () => {
                             <Swiper 
                             spaceBetween={30} 
                             slidesPerView={1} 
-                            className="xl:h-[520px] mb-12"
+                            className="xl:h-[520px] mb-12 relative" // <-- Añade relative aquí
                             onSlideChange={handleSlideChange}>
                                 {projects.map((project, index) => (
                                     <SwiperSlide key={index} className="w-full">
@@ -172,20 +172,22 @@ const WorkPage = () => {
                                                     <div className="w-full h-full relative flex items-center justify-center">
                                                         <video
                                                             ref={videoRef}
-                                                            src={project.video}
                                                             className="object-contain md:object-cover w-full h-full md:rounded-2xl xl:rounded-2xl"
                                                             style={{ maxHeight: "100%", maxWidth: "100%" }}
                                                             controls={isPlaying}
                                                             onEnded={handleVideoEnded}
                                                             onPause={() => setIsPlaying(false)}
                                                             onPlay={() => setIsPlaying(true)}
-                                                        />
+                                                        >
+                                                            <source src={project.video} type="video/mp4" />
+                                                            Tu navegador no soporta la reproducción de video.
+                                                        </video>
                                                         {!isPlaying && (
                                                             <>
                                                                 <div className="absolute inset-0 bg-black/60 z-10 md:rounded-2xl xl:rounded-2xl"></div>
                                                                 <button
                                                                     onClick={handlePlay}
-                                                                    className="absolute inset-0 flex items-center justify-center focus:outline-none z-20"
+                                                                    className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center focus:outline-none z-20" // <-- Centrado absoluto
                                                                     aria-label="Play video"
                                                                     type="button"
                                                                 >
@@ -207,15 +209,15 @@ const WorkPage = () => {
                                                     />
                                                 ) : null}
                                             </div>
+                                            {/* Botones del slider alineados verticalmente */}
+                                            <WorkSliderButtons 
+                                                containerStyles="absolute left-0 right-0 top-1/2 -translate-y-1/2 flex justify-between w-full z-20 pointer-events-none"
+                                                buttonStyles="bg-[#00ff99] hover:bg-[#00cc7a] text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all pointer-events-auto"
+                                                iconStyles=""
+                                            />
                                         </div>
                                     </SwiperSlide>
                                 ))}
-                                {/* botons */}
-                                <WorkSliderButtons 
-                                    containerStyles="absolute left-0 right-0 top-1/2 -translate-y-1/2 flex justify-between w-full z-20"
-                                    buttonStyles="bg-[#00ff99] hover:bg-[#00cc7a] text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all"
-                                    iconStyles=""
-                                />
                             </Swiper>
                     </div>
                 </div>
