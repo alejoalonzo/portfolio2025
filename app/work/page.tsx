@@ -18,7 +18,7 @@ const projects =[
         category: "Blockchain Development",
         title: "Chat Dapp",
         description: "A decentralized chat app where users can easily connect their wallet and perform actions like creating an account, adding friends, and sending messages. All interactions are securely stored on the blockchain and optimized to minimize transaction costs. The interface is fast, clean, and designed for a smooth user experience.",
-        video: "/assets/chatDapp.mp4", 
+        video: "/assets/ChatDapp.mp4", 
         stack: [{name: "Solidity"}, {name: "Hardhat"}, {name: "Ethers.js"}, {name: "web3.js"}, {name: "Next.js"}, {name: "TailwindCSS"}],
         live: "",
         github: "https://github.com/alejoalonzo/ChatDApp"
