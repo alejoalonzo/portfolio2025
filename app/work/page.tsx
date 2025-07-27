@@ -49,13 +49,15 @@ const projects =[
 const WorkPage = () => {
     const [project, setProject] = useState(projects[0]);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [videoError, setVideoError] = useState(false);
     const videoRef = useRef<HTMLVideoElement>(null);
 
     const handleSlideChange = (swiper: { activeIndex: number }) => {
         const currentIndex = swiper.activeIndex;
         setProject(projects[currentIndex]);
         setIsPlaying(false); // Reset play state on slide change
-        if (videoRef.current) {
+        // Solo pausa si el video está en reproducción
+        if (videoRef.current && !videoRef.current.paused) {
             videoRef.current.pause();
             videoRef.current.currentTime = 0;
         }
@@ -63,9 +65,14 @@ const WorkPage = () => {
 
     const handlePlay = () => {
         if (videoRef.current) {
-            videoRef.current.play();
+            setVideoError(false);
+            videoRef.current.play().catch(() => setVideoError(true));
             setIsPlaying(true);
         }
+    };
+
+    const handleVideoError = () => {
+        setVideoError(true);
     };
 
     const handleVideoEnded = () => {
@@ -170,24 +177,33 @@ const WorkPage = () => {
                                             <div className="relative w-full h-full flex items-center justify-center z-10 md:rounded-2xl xl:rounded-2xl overflow-hidden">
                                                 {project.video ? (
                                                     <div className="w-full h-full relative flex items-center justify-center">
-                                                        <video
-                                                            ref={videoRef}
-                                                            className="object-contain md:object-cover w-full h-full md:rounded-2xl xl:rounded-2xl"
-                                                            style={{ maxHeight: "100%", maxWidth: "100%" }}
-                                                            controls={isPlaying}
-                                                            onEnded={handleVideoEnded}
-                                                            onPause={() => setIsPlaying(false)}
-                                                            onPlay={() => setIsPlaying(true)}
-                                                        >
-                                                            <source src={project.video} type="video/mp4" />
-                                                            Tu navegador no soporta la reproducción de video.
-                                                        </video>
-                                                        {!isPlaying && (
+                                                        {!videoError ? (
+                                                            <video
+                                                                ref={videoRef}
+                                                                className="object-contain md:object-cover w-full h-full md:rounded-2xl xl:rounded-2xl bg-black"
+                                                                style={{ maxHeight: "100%", maxWidth: "100%" }}
+                                                                controls={isPlaying}
+                                                                onEnded={handleVideoEnded}
+                                                                onPause={() => setIsPlaying(false)}
+                                                                onPlay={() => setIsPlaying(true)}
+                                                                onError={handleVideoError}
+                                                            >
+                                                                <source src={project.video} type="video/mp4" />
+                                                                Tu navegador no soporta la reproducción de video.
+                                                            </video>
+                                                        ) : (
+                                                            <div className="flex flex-col items-center justify-center w-full h-full bg-black/80 text-white z-20 md:rounded-2xl xl:rounded-2xl">
+                                                                <span className="text-lg font-semibold mb-2">No se pudo cargar el video.</span>
+                                                                <span className="text-sm opacity-70">Verifica que el archivo exista en <code>/public/assets/chatDapp.mp4</code> y que el formato sea compatible.</span>
+                                                            </div>
+                                                        )}
+                                                        {/* Solo muestra el overlay y el botón de play si NO está reproduciendo */}
+                                                        {!isPlaying && !videoError && (
                                                             <>
-                                                                <div className="absolute inset-0 bg-black/60 z-10 md:rounded-2xl xl:rounded-2xl"></div>
+                                                                <div className="absolute inset-0 bg-black/60 z-10 md:rounded-2xl xl:rounded-2xl pointer-events-none"></div>
                                                                 <button
                                                                     onClick={handlePlay}
-                                                                    className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center focus:outline-none z-20" // <-- Centrado absoluto
+                                                                    className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center focus:outline-none z-20"
                                                                     aria-label="Play video"
                                                                     type="button"
                                                                 >
@@ -209,7 +225,6 @@ const WorkPage = () => {
                                                     />
                                                 ) : null}
                                             </div>
-                                            {/* Botones del slider alineados verticalmente */}
                                             <WorkSliderButtons 
                                                 containerStyles="absolute left-0 right-0 top-1/2 -translate-y-1/2 flex justify-between w-full z-20 pointer-events-none"
                                                 buttonStyles="bg-[#00ff99] hover:bg-[#00cc7a] text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all pointer-events-auto"
