@@ -25,8 +25,12 @@ const Home = () => {
           <div className="text-center xl:text-left order-2 xl:order-none">
             <span className="text-xl">Blockchain Developer</span>
             <div className="leading-tight">
-              <h1 className="h1 mt-4">Hello, I&apos;m</h1>
-              <span className="h1 text-accent">Alejandro A.</span>
+              <h1 className="h1 mt-4">
+                Hello, I&apos;m
+              </h1>
+              <span className="h1 text-[#00ff99]">
+                Alejandro A.
+              </span>
             </div>
             <p className="max-w-[400px] mb-9 mt-6 text-white/80">
               Crafting innovative solutions through decentralized applications 

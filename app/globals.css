@@ -165,3 +165,10 @@
     max-width: 100%;
   }
 }
+
+/* Slider border accent */
+.slider-border-accent {
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-color: rgba(255,255,255,0.1) !important;
+}
