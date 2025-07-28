@@ -14,7 +14,8 @@ const PageTransition = ({ children }: PageTransitionProps) => {
 
     return (
         <AnimatePresence mode="wait">
-            <div key={pathname} className="h-screen w-screen">
+            <div key={pathname} className="min-h-[100svh] w-full">
+                
                 {/* Efecto de escaleras */}
                 <StairTransition />
                 
@@ -29,7 +30,7 @@ const PageTransition = ({ children }: PageTransitionProps) => {
                             ease: "easeInOut"
                         }
                     }}
-                    className="h-screen w-screen pt-20"
+                    className="min-h-[100svh] w-full pt-20"
                 >
                     {children}
                 </motion.div>

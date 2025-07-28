@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { JetBrains_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import PageTransition from "@/components/pageTransition";
-import StairTransition from "@/components/stairTransition";
+// import StairTransition from "@/components/stairTransition";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -41,7 +41,7 @@ export default function RootLayout({
         suppressHydrationWarning={true}
       >
         <Header />
-        <StairTransition></StairTransition>
+        {/* <StairTransition></StairTransition> */}
         <PageTransition>{children}</PageTransition>
       </body>
     </html>

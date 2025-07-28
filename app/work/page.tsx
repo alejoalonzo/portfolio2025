@@ -187,6 +187,7 @@ const WorkPage = () => {
                                                                 onPause={() => setIsPlaying(false)}
                                                                 onPlay={() => setIsPlaying(true)}
                                                                 onError={handleVideoError}
+                                                                poster="/assets/chatDapp.jpg"
                                                             >
                                                                 <source src={project.video} type="video/mp4" />
                                                                 Tu navegador no soporta la reproducción de video.
