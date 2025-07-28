@@ -39,7 +39,7 @@ const ServicesPage = () => {
             <div className="container mx-auto">
                 <motion.div 
                     initial={{ opacity: 0}}
-                    animate={{ opacity: 1, transition: { delay:2.4, duration: 0.4, ease: "easeIn" } }}
+                    animate={{ opacity: 1, transition: { delay:1.1, duration: 0.4, ease: "easeIn" } }}
                     className="grid grid-cols-1 md:grid-cols-2 gap-[60px] px-5 xl:px-0">
                     {servicesData.map((service, index) => {
                         return (

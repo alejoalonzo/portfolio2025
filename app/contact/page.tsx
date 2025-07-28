@@ -94,7 +94,7 @@ const ContactPage = () => {
     return (
         <motion.section
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1, transition: { delay: 2.4, duration: 0.5, ease: "easeIn" } }}
+            animate={{ opacity: 1, transition: { delay: 1.1, duration: 0.5, ease: "easeIn" } }}
             className="py-6 -mt-20 xl:mt-0"
         >
             {/* Toast Notification */}
