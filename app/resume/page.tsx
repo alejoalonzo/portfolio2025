@@ -150,10 +150,30 @@ const ResumePage = () => {
             <div className="container mx-auto">
                 <Tabs defaultValue="experience" className="flex flex-col xl:flex-row gap-[60px] px-5 xl:px-0">
                     <TabsList className='flex flex-col w-full max-w-[380px] mx-auto xl:mx-0 gap-6'>
-                        <TabsTrigger value="experience" className="w-full py-3 data-[state=active]:bg-[#00ff99] data-[state=active]:text-primary">Experience</TabsTrigger>
-                        <TabsTrigger value="education" className="w-full py-3 data-[state=active]:bg-[#00ff99] data-[state=active]:text-primary">Education</TabsTrigger>
-                        <TabsTrigger value="skills" className="w-full py-3 data-[state=active]:bg-[#00ff99] data-[state=active]:text-primary">Skills</TabsTrigger>
-                        <TabsTrigger value="about" className="w-full py-3 data-[state=active]:bg-[#00ff99] data-[state=active]:text-primary">About Me</TabsTrigger>
+                        <TabsTrigger
+                            value="experience"
+                            className="w-full py-3 data-[state=active]:bg-[#00ff99] data-[state=active]:text-primary xl:hover:bg-[#3a3a40] transition-colors"
+                        >
+                            Experience
+                        </TabsTrigger>
+                        <TabsTrigger
+                            value="education"
+                            className="w-full py-3 data-[state=active]:bg-[#00ff99] data-[state=active]:text-primary xl:hover:bg-[#3a3a40] transition-colors"
+                        >
+                            Education
+                        </TabsTrigger>
+                        <TabsTrigger
+                            value="skills"
+                            className="w-full py-3 data-[state=active]:bg-[#00ff99] data-[state=active]:text-primary xl:hover:bg-[#3a3a40] transition-colors"
+                        >
+                            Skills
+                        </TabsTrigger>
+                        <TabsTrigger
+                            value="about"
+                            className="w-full py-3 data-[state=active]:bg-[#00ff99] data-[state=active]:text-primary xl:hover:bg-[#3a3a40] transition-colors"
+                        >
+                            About Me
+                        </TabsTrigger>
                     </TabsList>
 
 
