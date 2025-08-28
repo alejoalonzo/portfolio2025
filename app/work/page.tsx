@@ -12,19 +12,31 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@radix
 import WorkSliderButtons from "@/components/workSliderBotons";
 
 
-const projects =[
-        {
+const projects = [
+    {
         num: "01",
+        category: "DeFi - Blockchain Development",
+        title: "Real Estate Dapp - Multi-Party Approvals",
+        description: "Decentralized purchase flow on Ethereum with on-chain escrow. Integrates MetaMask for ETH payments/signing. The Solidity contract models buyer, seller, inspector, and lender; funds only release after inspector and lender approval. Frontend in Next.js with Ethers.js/Web3, developed and tested using Hardhat.",
+        video: "/assets/RealEstateDapp.mp4",
+        poster: "/assets/RealEstateDapp.jpg",
+        stack:[{name: "Solidity"}, {name: "Hardhat"}, {name: "Ethers.js"}, {name: "web3.js"}, {name: "Next.js"}, {name: "TailwindCSS"}],
+        live: "https://real-state-dapp.vercel.app/",
+        github: "https://github.com/alejoalonzo/RealStateDapp"
+    },
+        {
+        num: "02",
         category: "Blockchain Development",
         title: "Chat Dapp",
         description: "A decentralized chat app where users can easily connect their wallet and perform actions like creating an account, adding friends, and sending messages. All interactions are securely stored on the blockchain and optimized to minimize transaction costs. The interface is fast, clean, and designed for a smooth user experience.",
-        video: "/assets/ChatDapp.mp4", 
+        video: "/assets/ChatDapp.mp4",
+        poster: "/assets/chatDapp.jpg",
         stack: [{name: "Solidity"}, {name: "Hardhat"}, {name: "Ethers.js"}, {name: "web3.js"}, {name: "Next.js"}, {name: "TailwindCSS"}],
         live: "",
         github: "https://github.com/alejoalonzo/ChatDApp"
     },
     {
-        num: "02",
+        num: "03",
         category: "Frontend Development",
         title: "Weather App",
         description: "Modern UI weather application featuring sleek design and real-time weather data integration through external API.",
@@ -33,16 +45,7 @@ const projects =[
         live: "https://alejoalonzo.github.io/WeatherApp/",
         github: "https://github.com/alejoalonzo/WeatherApp"
     },
-    {
-        num: "03",
-        category: "Full Stack Development",
-        title: "E-Commerce App",
-        description: "Robust e-commerce platform using MEAN stack architecture with Nx monorepo structure and Angular PrimeNG components.",
-        image: "/assets/lionApp.jpg",
-        stack:[{name: "Angular 15"}, {name: "TypeScript"}, {name: "SASS"}, {name: "Nx"}, {name: "Node.js"}, {name: "Express"}, {name: "MongoDB"}],
-        live: "",
-        github: "https://github.com/alejoalonzo/EC-eshopMEAN-FrontEnd-AdminPanelAndNgShop"
-    },
+
 
 ]
 
@@ -50,23 +53,28 @@ const WorkPage = () => {
     const [project, setProject] = useState(projects[0]);
     const [isPlaying, setIsPlaying] = useState(false);
     const [videoError, setVideoError] = useState(false);
-    const videoRef = useRef<HTMLVideoElement>(null);
+    const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+    const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
     const handleSlideChange = (swiper: { activeIndex: number }) => {
         const currentIndex = swiper.activeIndex;
         setProject(projects[currentIndex]);
-        setIsPlaying(false); // Reset play state on slide change
-        // Solo pausa si el video está en reproducción
-        if (videoRef.current && !videoRef.current.paused) {
-            videoRef.current.pause();
-            videoRef.current.currentTime = 0;
-        }
+        setCurrentVideoIndex(currentIndex);
+        setIsPlaying(false);
+        // Pausa todos los videos
+        videoRefs.current.forEach((video) => {
+            if (video && !video.paused) {
+                video.pause();
+                video.currentTime = 0;
+            }
+        });
     };
 
     const handlePlay = () => {
-        if (videoRef.current) {
+        const currentVideo = videoRefs.current[currentVideoIndex];
+        if (currentVideo) {
             setVideoError(false);
-            videoRef.current.play().catch(() => setVideoError(true));
+            currentVideo.play().catch(() => setVideoError(true));
             setIsPlaying(true);
         }
     };
@@ -87,7 +95,7 @@ const WorkPage = () => {
         >
             <div className="container mx-auto">
                 <div className="flex flex-col xl:flex-row xl:gap-[30px]">
-                    <div className="w-full xl:w-1/2 xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none gap-6 xl:gap-0 px-5 xl:px-0">
+                    <div className="w-full xl:w-1/2 xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none gap-6 xl:gap-4 px-5 xl:px-0">
                         {/* outline number */}
                         <div className="text-8xl leading-none font-extrabold text-transparent" style={{WebkitTextStroke: '1px white'}}>
                             {project.num}
@@ -96,6 +104,10 @@ const WorkPage = () => {
                         <div className="text-[42px] font-bold leading-none text-white group-hover:text-[#00ff99] transition-all duration-500 capitalize">
                             {project.category}
                         </div>
+                        {/* title */}
+                        <h2 className="text-[24px] font-bold leading-none text-[#00ff99]">
+                            {project.title}
+                        </h2>
                         {/* description */}
                             <p className="text-white/60">{project.description}</p>
                         {/* stack */}
@@ -179,15 +191,17 @@ const WorkPage = () => {
                                                     <div className="w-full h-full relative flex items-center justify-center">
                                                         {!videoError ? (
                                                             <video
-                                                                ref={videoRef}
+                                                                ref={(el) => {
+                                                                    videoRefs.current[index] = el;
+                                                                }}
                                                                 className="object-contain md:object-cover w-full h-full md:rounded-2xl xl:rounded-2xl bg-black"
                                                                 style={{ maxHeight: "100%", maxWidth: "100%" }}
-                                                                controls={isPlaying}
+                                                                controls={isPlaying && currentVideoIndex === index}
                                                                 onEnded={handleVideoEnded}
                                                                 onPause={() => setIsPlaying(false)}
                                                                 onPlay={() => setIsPlaying(true)}
                                                                 onError={handleVideoError}
-                                                                poster="/assets/chatDapp.jpg"
+                                                                poster={project.poster}
                                                             >
                                                                 <source src={project.video} type="video/mp4" />
                                                                 Tu navegador no soporta la reproducción de video.
@@ -199,7 +213,7 @@ const WorkPage = () => {
                                                             </div>
                                                         )}
                                                         {/* Solo muestra el overlay y el botón de play si NO está reproduciendo */}
-                                                        {!isPlaying && !videoError && (
+                                                        {!isPlaying && !videoError && currentVideoIndex === index && (
                                                             <>
                                                                 <div className="absolute inset-0 bg-black/60 z-10 md:rounded-2xl xl:rounded-2xl pointer-events-none"></div>
                                                                 <button
