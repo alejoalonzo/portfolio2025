@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 
 const stats=[
   {
-    num: 60,
+    num: 63,
     text: "Repositories on GitHub"
   },
   {

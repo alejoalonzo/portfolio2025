@@ -125,28 +125,23 @@ const WorkPage = () => {
                                 {/* Project live */}
                                 <TooltipProvider delayDuration={100}>
                                     <Tooltip>
-                                        <TooltipTrigger
-                                            className={`w-[70px] h-[70px] rounded-full bg-white/5 flex items-center justify-center hover:-rotate-45 transition-all duration-500 group ${
-                                                !project.live
-                                                    ? "opacity-50 cursor-not-allowed"
-                                                    : "hover:bg-[#00ff99]"
-                                            }`}
-                                            asChild
-                                        >
-                                            <span>
-                                                <Link
-                                                    href={project.live || "#"}
-                                                    target="_blank"
-                                                    tabIndex={project.live ? 0 : -1}
-                                                    aria-disabled={!project.live}
-                                                    className="inline-flex items-center gap-2 text-white hover:text-[#00ff99] transition-all duration-500"
-                                                    onClick={e => {
-                                                        if (!project.live) e.preventDefault();
-                                                    }}
-                                                >
-                                                    <BsArrowUpRight className="text-2xl text-white group-hover:text-black transition-all duration-500" />
-                                                </Link>
-                                            </span>
+                                        <TooltipTrigger asChild>
+                                            <Link
+                                                href={project.live || "#"}
+                                                target="_blank"
+                                                tabIndex={project.live ? 0 : -1}
+                                                aria-disabled={!project.live}
+                                                className={`w-[70px] h-[70px] rounded-full bg-white/5 flex items-center justify-center hover:-rotate-45 transition-all duration-500 group ${
+                                                    !project.live
+                                                        ? "opacity-50 cursor-not-allowed"
+                                                        : "hover:bg-[#00ff99] cursor-pointer"
+                                                }`}
+                                                onClick={e => {
+                                                    if (!project.live) e.preventDefault();
+                                                }}
+                                            >
+                                                <BsArrowUpRight className="text-2xl text-white group-hover:text-black transition-all duration-500" />
+                                            </Link>
                                         </TooltipTrigger>
                                         <TooltipContent className="bg-white text-black border-white rounded-md px-3 py-2" sideOffset={5}>
                                             <p>
@@ -161,7 +156,7 @@ const WorkPage = () => {
                                 <Link href={project.github} target="_blank" className="inline-flex items-center gap-2 text-white hover:text-[#00ff99] transition-all duration-500">
                                     <TooltipProvider delayDuration={100}>
                                         <Tooltip>
-                                            <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 hover:bg-[#00ff99] flex items-center justify-center group">
+                                            <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 hover:bg-[#00ff99] flex items-center justify-center group cursor-pointer">
                                                 <BsGithub className="text-2xl text-white group-hover:text-black transition-all duration-500"></BsGithub>
                                             </TooltipTrigger>
                                             <TooltipContent className="bg-white text-black border-white rounded-md px-3 py-2" sideOffset={5}>
