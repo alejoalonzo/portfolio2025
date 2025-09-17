@@ -127,10 +127,7 @@ const WorkPage = () => {
                                         {playingVideo === index && (
                                             <div 
                                                 className="absolute inset-0 z-10 cursor-pointer"
-                                                onClick={(e) => {
-                                                    e.preventDefault();
-                                                    e.stopPropagation();
-                                                    console.log('🛑 Overlay clicked - stopping video');
+                                                onClick={() => {
                                                     const videoEl = videoRefs.current[index];
                                                     if (videoEl) {
                                                         videoEl.pause();
@@ -174,6 +171,7 @@ const WorkPage = () => {
                                 }}
                                 transition={{ duration: 0.6, ease: "easeInOut" }}
                                 className="absolute inset-0 z-20 flex items-end"
+                                style={{ pointerEvents: playingVideo !== index ? 'auto' : 'none' }}
                             >
                                 <div className="w-full p-8 md:p-12 lg:p-16">
                                     <div className="max-w-6xl mx-auto">
