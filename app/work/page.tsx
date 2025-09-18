@@ -89,14 +89,14 @@ const WorkPage = () => {
         <motion.section
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, transition: { delay: 1.1, duration: 0.5, ease: "easeIn" } }}
-            className="min-h-screen flex flex-col relative overflow-hidden"
+            className="min-h-screen flex flex-col relative"
         >
             {/* Full screen slider container */}
             <div className="flex-1 relative">
                 <Swiper 
                     spaceBetween={0} 
                     slidesPerView={1} 
-                    className="h-screen w-full"
+                    className="h-screen w-full md:h-screen"
                     onSlideChange={handleSlideChange}
                     onSwiper={(swiper) => {
                         swiperRef.current = swiper;
@@ -169,12 +169,12 @@ const WorkPage = () => {
                                     y: playingVideo !== index ? 0 : 30
                                 }}
                                 transition={{ duration: 0.6, ease: "easeInOut" }}
-                                className="absolute inset-0 z-20 flex items-start"
+                                className="absolute inset-0 z-20 flex items-start overflow-y-auto md:overflow-y-hidden"
                                 style={{ pointerEvents: playingVideo !== index ? 'auto' : 'none' }}
                             >
-                                <div className="w-full p-8 md:p-12 lg:p-16 lg:pt-32">
+                                <div className="w-full p-4 md:p-8 lg:p-12 xl:p-16 lg:pt-32 min-h-screen md:min-h-0 flex items-center md:items-start">
                                     <div className="container mx-auto">
-                                        <div className="grid lg:grid-cols-2 gap-28 items-start">
+                                        <div className="grid lg:grid-cols-2 gap-8 md:gap-28 items-start">
                                             {/* Project info */}
                                             <motion.div 
                                                 initial={{ opacity: 1, x: 0 }}
@@ -183,28 +183,32 @@ const WorkPage = () => {
                                                     x: playingVideo !== index ? 0 : -50
                                                 }}
                                                 transition={{ duration: 0.6, ease: "easeInOut", delay: 0.1 }}
-                                                className="space-y-6"
+                                                className="space-y-4 md:space-y-6"
                                             >
                                                 {/* Project number */}
                                                 <div className="flex items-center gap-4">
-                                                    <span className="text-5xl font-extrabold text-transparent bg-gradient-to-r from-[#00ff99] to-[#00cc7a] bg-clip-text leading-none">
+                                                    <span className="text-3xl md:text-5xl font-extrabold text-transparent bg-gradient-to-r from-[#00ff99] to-[#00cc7a] bg-clip-text leading-none">
                                                         {currentProject.num}
                                                     </span>
-                                                    <div className="h-20 w-px bg-gradient-to-b from-[#00ff99] to-transparent"></div>
-                                                    <span className="text-[#00ff99] font-semibold text-sm uppercase tracking-widest bg-[#00ff99]/10 px-4 py-2 rounded-full border border-[#00ff99]/30">
+                                                    <div className="h-12 md:h-20 w-px bg-gradient-to-b from-[#00ff99] to-transparent"></div>
+                                                    <span className="text-[#00ff99] font-semibold text-xs md:text-sm uppercase tracking-widest bg-[#00ff99]/10 px-3 md:px-4 py-1.5 md:py-2 rounded-full border border-[#00ff99]/30">
                                                         {currentProject.category}
                                                     </span>
                                                 </div>
                                                 
+                                                <div className="pb-4 sm:pb-0"></div>
+                                                
                                                 {/* Title and description */}
-                                                <div className="space-y-4">
-                                                    <h1 className="text-5xl font-extrabold text-white leading-tight">
+                                                <div className="space-y-3 md:space-y-4">
+                                                    <h1 className="text-2xl md:text-5xl font-extrabold text-white leading-tight">
                                                         {currentProject.title}
                                                     </h1>
-                                                    <p className="text-white/60 leading-relaxed max-w-2xl">
+                                                    <p className="text-white/60 leading-relaxed max-w-2xl text-sm md:text-base">
                                                         {currentProject.description}
                                                     </p>
                                                 </div>
+                                                
+                                                <div className="pb-4 sm:pb-0"></div>
                                                 
                                                 {/* Tech stack */}
                                                 <div className="flex flex-wrap gap-3">
@@ -217,6 +221,8 @@ const WorkPage = () => {
                                                         </span>
                                                     ))}
                                                 </div>
+                                                
+                                                <div className="pb-4 sm:pb-0"></div>
                                                 
                                                 {/* Action buttons */}
                                                 <div className="flex flex-col md:flex-row gap-3 md:gap-6 pt-4">
@@ -241,7 +247,7 @@ const WorkPage = () => {
                                                 </div>
                                                 
                                                 {/* Mobile controls - Play button with navigation */}
-                                                <div className="flex md:hidden gap-3 pt-4">
+                                                <div className="flex md:hidden gap-3 pt-6 pb-8">
                                                     <button 
                                                         className="bg-white/10 backdrop-blur-md hover:bg-white/20 text-white text-lg w-12 h-12 flex justify-center items-center rounded-full border border-white/20 transition-all duration-300"
                                                         onClick={() => swiperRef.current?.slidePrev()}
@@ -321,9 +327,9 @@ const WorkPage = () => {
                 {/* WORKING PLAY BUTTON - ALIGNED WITH COUNTER - HIDDEN ON MOBILE */}
                 {projects[currentSlide]?.video && playingVideo === null && (
                     <div className="absolute inset-0 items-center z-[200] pointer-events-none hidden md:flex">
-                        <div className="w-full p-8 md:p-12 lg:p-16 lg:pt-32">
+                        <div className="w-full p-4 md:p-8 lg:p-12 xl:p-16 lg:pt-32 min-h-screen md:min-h-0 flex items-center md:items-start">
                             <div className="container mx-auto">
-                                <div className="grid lg:grid-cols-2 gap-28 items-center">
+                                <div className="grid lg:grid-cols-2 gap-8 md:gap-28 items-center">
                                     <div></div>
                                     <div className="flex justify-center">
                                         <button
