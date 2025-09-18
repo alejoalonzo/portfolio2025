@@ -30,7 +30,7 @@ const PageTransition = ({ children }: PageTransitionProps) => {
                             ease: "easeInOut"
                         }
                     }}
-                    className="min-h-[100svh] w-full pt-20"
+                    className={`min-h-[100svh] w-full ${pathname === '/work' ? '' : 'pt-20'}`}
                 >
                     {children}
                 </motion.div>

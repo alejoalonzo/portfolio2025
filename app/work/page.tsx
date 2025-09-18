@@ -33,7 +33,7 @@ const projects = [
     {
         num: "02",
         category: "DeFi - Blockchain Development",
-        title: "Real Estate Dapp - Multi-Party Approvals",
+        title: "Real Estate Dapp - Multi Party Approvals",
         description: "Decentralized purchase flow on Ethereum with on-chain escrow. Integrates MetaMask for ETH payments/signing. The Solidity contract models buyer, seller, inspector, and lender; funds only release after inspector and lender approval. Frontend in Next.js with Ethers.js/Web3, developed and tested using Hardhat.",
         video: "/assets/RealEstateDapp.mp4",
         poster: "/assets/RealEstateDapp.jpg",
@@ -174,7 +174,7 @@ const WorkPage = () => {
                                 style={{ pointerEvents: playingVideo !== index ? 'auto' : 'none' }}
                             >
                                 <div className="w-full p-8 md:p-12 lg:p-16">
-                                    <div className="max-w-6xl mx-auto">
+                                    <div className="container mx-auto">
                                         <div className="grid lg:grid-cols-2 gap-28 items-end">
                                             {/* Project info */}
                                             <motion.div 
@@ -288,7 +288,7 @@ const WorkPage = () => {
                 {projects[currentSlide]?.video && playingVideo === null && (
                     <div className="absolute inset-0 flex items-center z-[200] pointer-events-none">
                         <div className="w-full p-8 md:p-12 lg:p-16">
-                            <div className="max-w-6xl mx-auto">
+                            <div className="container mx-auto">
                                 <div className="grid lg:grid-cols-2 gap-28 items-center">
                                     <div></div>
                                     <div className="flex justify-center">
