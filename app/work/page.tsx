@@ -219,25 +219,60 @@ const WorkPage = () => {
                                                 </div>
                                                 
                                                 {/* Action buttons */}
-                                                <div className="flex gap-6 pt-4">
+                                                <div className="flex flex-col md:flex-row gap-3 md:gap-6 pt-4">
                                                     {currentProject.live && (
                                                         <Link
                                                             href={currentProject.live}
                                                             target="_blank"
-                                                            className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-[#00ff99] to-[#00cc7a] text-black px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                                                            className="group relative inline-flex items-center justify-center gap-2 md:gap-3 bg-gradient-to-r from-[#00ff99] to-[#00cc7a] text-black px-4 py-3 md:px-8 md:py-4 rounded-full font-semibold text-sm md:text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl"
                                                         >
-                                                            <span>Ver Proyecto</span>
-                                                            <BsArrowUpRight className="text-xl group-hover:rotate-45 transition-transform" />
+                                                            <span>View Project</span>
+                                                            <BsArrowUpRight className="text-lg md:text-xl group-hover:rotate-45 transition-transform" />
                                                         </Link>
                                                     )}
                                                     <Link
                                                         href={currentProject.github}
                                                         target="_blank"
-                                                        className="group relative inline-flex items-center gap-3 bg-white/10 backdrop-blur-md text-white px-8 py-4 rounded-full font-semibold text-lg border border-white/20 transition-all duration-300 hover:bg-white/20 hover:scale-105"
+                                                        className="group relative inline-flex items-center justify-center gap-2 md:gap-3 bg-white/10 backdrop-blur-md text-white px-4 py-3 md:px-8 md:py-4 rounded-full font-semibold text-sm md:text-lg border border-white/20 transition-all duration-300 hover:bg-white/20 hover:scale-105"
                                                     >
-                                                        <BsGithub className="text-xl" />
-                                                        <span>Código</span>
+                                                        <BsGithub className="text-lg md:text-xl" />
+                                                        <span>Code</span>
                                                     </Link>
+                                                </div>
+                                                
+                                                {/* Mobile controls - Play button with navigation */}
+                                                <div className="flex md:hidden gap-3 pt-4">
+                                                    <button 
+                                                        className="bg-white/10 backdrop-blur-md hover:bg-white/20 text-white text-lg w-12 h-12 flex justify-center items-center rounded-full border border-white/20 transition-all duration-300"
+                                                        onClick={() => swiperRef.current?.slidePrev()}
+                                                    >
+                                                        <PiCaretLeftBold />
+                                                    </button>
+                                                    
+                                                    {projects[currentSlide]?.video && playingVideo === null && (
+                                                        <button
+                                                            onClick={() => {
+                                                                const videoEl = videoRefs.current[currentSlide];
+                                                                if (videoEl) {
+                                                                    videoEl.play();
+                                                                    setPlayingVideo(currentSlide);
+                                                                }
+                                                            }}
+                                                            className="flex-1 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white px-6 py-3 rounded-full border border-white/20 transition-all duration-300 font-semibold text-sm flex items-center justify-center gap-2"
+                                                        >
+                                                            <svg width="16" height="16" viewBox="0 0 32 32">
+                                                                <polygon points="12,8 24,16 12,24" fill="white" />
+                                                            </svg>
+                                                            PLAY VIDEO
+                                                        </button>
+                                                    )}
+                                                    
+                                                    <button 
+                                                        className="bg-white/10 backdrop-blur-md hover:bg-white/20 text-white text-lg w-12 h-12 flex justify-center items-center rounded-full border border-white/20 transition-all duration-300"
+                                                        onClick={() => swiperRef.current?.slideNext()}
+                                                    >
+                                                        <PiCaretRightBold />
+                                                    </button>
                                                 </div>
                                             </motion.div>
                                             
@@ -252,7 +287,7 @@ const WorkPage = () => {
                                                 className="text-center space-y-8"
                                             >
                                                 {/* Slide counter */}
-                                                <div className="inline-block bg-black/50 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
+                                                <div className="hidden md:inline-block bg-black/50 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
                                                     <span className="text-white font-mono text-lg">
                                                         {String(currentSlide + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}
                                                     </span>
@@ -283,9 +318,9 @@ const WorkPage = () => {
                     ))}
                 </Swiper>
                 
-                {/* WORKING PLAY BUTTON - ALIGNED WITH COUNTER */}
+                {/* WORKING PLAY BUTTON - ALIGNED WITH COUNTER - HIDDEN ON MOBILE */}
                 {projects[currentSlide]?.video && playingVideo === null && (
-                    <div className="absolute inset-0 flex items-center z-[200] pointer-events-none">
+                    <div className="absolute inset-0 items-center z-[200] pointer-events-none hidden md:flex">
                         <div className="w-full p-8 md:p-12 lg:p-16 lg:pt-32">
                             <div className="container mx-auto">
                                 <div className="grid lg:grid-cols-2 gap-28 items-center">
@@ -320,12 +355,12 @@ const WorkPage = () => {
                     </div>
                 )}
                 
-                {/* Animated navigation arrows */}
+                {/* Animated navigation arrows - HIDDEN ON MOBILE */}
                 <motion.div
                     initial={{ opacity: 1 }}
                     animate={{ opacity: playingVideo === null ? 1 : 0 }}
                     transition={{ duration: 0.4, ease: "easeInOut" }}
-                    className="absolute right-8 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-30"
+                    className="absolute right-8 top-1/2 -translate-y-1/2 flex-col gap-4 z-30 hidden md:flex"
                     style={{ pointerEvents: playingVideo === null ? 'auto' : 'none' }}
                 >
                     <button 
