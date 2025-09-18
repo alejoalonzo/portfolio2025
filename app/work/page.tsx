@@ -147,7 +147,7 @@ const WorkPage = () => {
                                         priority={index === 0}
                                     />
                                 ) : (
-                                    <div className="w-full h-full bg-gradient-to-br from-gray-900 to-black"></div>
+                                    <div className="w-full h-full bg-gradient-to-br from-gray-900" style={{backgroundColor: '#1c1c22'}}></div>
                                 )}
                                 
                                 {/* Animated gradient overlay */}
@@ -157,8 +157,8 @@ const WorkPage = () => {
                                     transition={{ duration: 0.5, ease: "easeInOut" }}
                                     className="absolute inset-0 z-5"
                                 >
-                                    <div className="absolute inset-0 bg-gradient-to-r from-black via-black/90 to-black/70"></div>
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/20"></div>
+                                    <div className="absolute inset-0" style={{background: 'linear-gradient(to right, #1c1c22, rgba(28, 28, 34, 0.95), rgba(28, 28, 34, 0.85))'}}></div>
+                                    <div className="absolute inset-0" style={{background: 'linear-gradient(to top, rgba(28, 28, 34, 0.98), rgba(28, 28, 34, 0.85), rgba(28, 28, 34, 0.6))'}}></div>
                                 </motion.div>
                             </div>
 
