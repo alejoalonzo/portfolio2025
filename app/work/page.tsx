@@ -116,7 +116,6 @@ const WorkPage = () => {
                                             controls={false}
                                             onPause={() => setPlayingVideo(null)}
                                             onPlay={() => setPlayingVideo(index)}
-                                            poster={project.poster}
                                             muted
                                             playsInline
                                         >
@@ -170,12 +169,12 @@ const WorkPage = () => {
                                     y: playingVideo !== index ? 0 : 30
                                 }}
                                 transition={{ duration: 0.6, ease: "easeInOut" }}
-                                className="absolute inset-0 z-20 flex items-end"
+                                className="absolute inset-0 z-20 flex items-start"
                                 style={{ pointerEvents: playingVideo !== index ? 'auto' : 'none' }}
                             >
-                                <div className="w-full p-8 md:p-12 lg:p-16">
+                                <div className="w-full p-8 md:p-12 lg:p-16 lg:pt-32">
                                     <div className="container mx-auto">
-                                        <div className="grid lg:grid-cols-2 gap-28 items-end">
+                                        <div className="grid lg:grid-cols-2 gap-28 items-start">
                                             {/* Project info */}
                                             <motion.div 
                                                 initial={{ opacity: 1, x: 0 }}
@@ -287,7 +286,7 @@ const WorkPage = () => {
                 {/* WORKING PLAY BUTTON - ALIGNED WITH COUNTER */}
                 {projects[currentSlide]?.video && playingVideo === null && (
                     <div className="absolute inset-0 flex items-center z-[200] pointer-events-none">
-                        <div className="w-full p-8 md:p-12 lg:p-16">
+                        <div className="w-full p-8 md:p-12 lg:p-16 lg:pt-32">
                             <div className="container mx-auto">
                                 <div className="grid lg:grid-cols-2 gap-28 items-center">
                                     <div></div>
@@ -326,7 +325,7 @@ const WorkPage = () => {
                     initial={{ opacity: 1 }}
                     animate={{ opacity: playingVideo === null ? 1 : 0 }}
                     transition={{ duration: 0.4, ease: "easeInOut" }}
-                    className="absolute left-8 right-8 top-1/2 -translate-y-1/2 flex justify-between z-30"
+                    className="absolute right-8 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-30"
                     style={{ pointerEvents: playingVideo === null ? 'auto' : 'none' }}
                 >
                     <button 
