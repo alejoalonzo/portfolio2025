@@ -68,12 +68,12 @@ const experience = {
 const education = {
     icon: SiBlockchaindotcom,
     title: "My Education",
-    description: "I hold a Bachelor's degree in Graphic Design, followed by a 2-year higher degree in Web Development completed in Barcelona, Spain. I've also completed numerous specialized courses focused on Angular development, and I'm currently enrolled in an intensive 6-month Blockchain development program to enhance my expertise in decentralized technologies.",
+    description: "I hold a Bachelor's degree in Graphic Design, followed by a 2-year higher degree in Web Development completed in Barcelona, Spain. I've also completed numerous specialized courses focused on Angular development, and I'm currently enrolled in an intensive 12-month Blockchain development program to enhance my expertise in decentralized technologies.",
     items: [
         {
             institution: "Online - Self-taught",
             degree: "Smart Contracts & Web3 Blockchain Developer",
-            duration: "2025 - Present (Month 3 of 6)",
+            duration: "2025 - Present (Month 8 of 12)",
         },
         {
             institution: "Udemy",
@@ -152,25 +152,25 @@ const ResumePage = () => {
                     <TabsList className='flex flex-col w-full max-w-[380px] mx-auto xl:mx-0 gap-6'>
                         <TabsTrigger
                             value="experience"
-                            className="w-full py-3 data-[state=active]:bg-[#00ff99] data-[state=active]:text-primary xl:hover:bg-[#3a3a40] transition-colors"
+                            className="w-full py-3 data-[state=active]:bg-[#00ff99] data-[state=active]:text-primary data-[state=active]:hover:bg-[#00ff99] hover:bg-[#3a3a40] transition-colors"
                         >
                             Experience
                         </TabsTrigger>
                         <TabsTrigger
                             value="education"
-                            className="w-full py-3 data-[state=active]:bg-[#00ff99] data-[state=active]:text-primary xl:hover:bg-[#3a3a40] transition-colors"
+                            className="w-full py-3 data-[state=active]:bg-[#00ff99] data-[state=active]:text-primary data-[state=active]:hover:bg-[#00ff99] hover:bg-[#3a3a40] transition-colors"
                         >
                             Education
                         </TabsTrigger>
                         <TabsTrigger
                             value="skills"
-                            className="w-full py-3 data-[state=active]:bg-[#00ff99] data-[state=active]:text-primary xl:hover:bg-[#3a3a40] transition-colors"
+                            className="w-full py-3 data-[state=active]:bg-[#00ff99] data-[state=active]:text-primary data-[state=active]:hover:bg-[#00ff99] hover:bg-[#3a3a40] transition-colors"
                         >
                             Skills
                         </TabsTrigger>
                         <TabsTrigger
                             value="about"
-                            className="w-full py-3 data-[state=active]:bg-[#00ff99] data-[state=active]:text-primary xl:hover:bg-[#3a3a40] transition-colors"
+                            className="w-full py-3 data-[state=active]:bg-[#00ff99] data-[state=active]:text-primary data-[state=active]:hover:bg-[#00ff99] hover:bg-[#3a3a40] transition-colors"
                         >
                             About Me
                         </TabsTrigger>

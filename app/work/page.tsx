@@ -5,10 +5,11 @@ import Link from "next/link";
 import Image from "next/image";
 import  { BsArrowUpRight, BsGithub } from "react-icons/bs";
 import { PiCaretLeftBold, PiCaretRightBold } from "react-icons/pi";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper';
 import 'swiper/css';
+import RotateDeviceIcon from "@/components/RotateDeviceIcon";
 
 
 const projects = [
@@ -67,15 +68,30 @@ const projects = [
 const WorkPage = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [playingVideo, setPlayingVideo] = useState<number | null>(null);
+    const [showRotateIcon, setShowRotateIcon] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
     const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
     const swiperRef = useRef<SwiperType | null>(null);
 
     const currentProject = projects[currentSlide];
 
+    // Check if device is mobile
+    useEffect(() => {
+        const checkIfMobile = () => {
+            setIsMobile(window.innerWidth < 768); // md breakpoint
+        };
+        
+        checkIfMobile();
+        window.addEventListener('resize', checkIfMobile);
+        
+        return () => window.removeEventListener('resize', checkIfMobile);
+    }, []);
+
     const handleSlideChange = (swiper: { activeIndex: number }) => {
         const currentIndex = swiper.activeIndex;
         setCurrentSlide(currentIndex);
         setPlayingVideo(null);
+        setShowRotateIcon(false);
         // Pausa todos los videos
         videoRefs.current.forEach((video) => {
             if (video && !video.paused) {
@@ -83,6 +99,19 @@ const WorkPage = () => {
                 video.currentTime = 0;
             }
         });
+    };
+
+    const handlePlayVideo = (index: number) => {
+        const videoEl = videoRefs.current[index];
+        if (videoEl) {
+            videoEl.play();
+            setPlayingVideo(index);
+            
+            // Show rotate icon only on mobile when video starts playing
+            if (isMobile) {
+                setShowRotateIcon(true);
+            }
+        }
     };
 
     return (
@@ -239,7 +268,7 @@ const WorkPage = () => {
                                                     <Link
                                                         href={currentProject.github}
                                                         target="_blank"
-                                                        className="group relative inline-flex items-center justify-center gap-2 md:gap-3 bg-white/10 backdrop-blur-md text-white px-4 py-3 md:px-8 md:py-4 rounded-full font-semibold text-sm md:text-lg border border-white/20 transition-all duration-300 hover:bg-white/20 hover:scale-105"
+                                                        className="group relative inline-flex items-center justify-center gap-2 md:gap-3 bg-white/10 backdrop-blur-md text-white px-4 py-3 md:px-8 md:py-4 rounded-full font-semibold text-sm md:text-lg border border-[#00ff99] sm:border-white/20 transition-all duration-300 hover:bg-white/20 hover:scale-105"
                                                     >
                                                         <BsGithub className="text-lg md:text-xl" />
                                                         <span>Code</span>
@@ -257,13 +286,7 @@ const WorkPage = () => {
                                                     
                                                     {projects[currentSlide]?.video && playingVideo === null && (
                                                         <button
-                                                            onClick={() => {
-                                                                const videoEl = videoRefs.current[currentSlide];
-                                                                if (videoEl) {
-                                                                    videoEl.play();
-                                                                    setPlayingVideo(currentSlide);
-                                                                }
-                                                            }}
+                                                            onClick={() => handlePlayVideo(currentSlide)}
                                                             className="flex-1 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white px-6 py-3 rounded-full border border-white/20 transition-all duration-300 font-semibold text-sm flex items-center justify-center gap-2"
                                                         >
                                                             <svg width="16" height="16" viewBox="0 0 32 32">
@@ -333,15 +356,7 @@ const WorkPage = () => {
                                     <div></div>
                                     <div className="flex justify-center">
                                         <button
-                                            onClick={() => {
-                                                console.log('🎯 PLAY BUTTON CLICKED!');
-                                                const videoEl = videoRefs.current[currentSlide];
-                                                if (videoEl) {
-                                                    console.log('📹 Playing video...');
-                                                    videoEl.play();
-                                                    setPlayingVideo(currentSlide);
-                                                }
-                                            }}
+                                            onClick={() => handlePlayVideo(currentSlide)}
                                             className="group relative pointer-events-auto"
                                         >
                                             {/* Glow effect */}
@@ -383,6 +398,12 @@ const WorkPage = () => {
                     </button>
                 </motion.div>
             </div>
+
+            {/* Rotate Device Icon - Only shows on mobile when video starts playing */}
+            <RotateDeviceIcon 
+                show={showRotateIcon} 
+                onHide={() => setShowRotateIcon(false)} 
+            />
         </motion.section>
     );
 }
