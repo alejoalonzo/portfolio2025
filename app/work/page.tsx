@@ -68,6 +68,7 @@ const projects = [
 const WorkPage = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [playingVideo, setPlayingVideo] = useState<number | null>(null);
+    const [showVideo, setShowVideo] = useState(false);
     const [showRotateIcon, setShowRotateIcon] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
     const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
@@ -92,6 +93,7 @@ const WorkPage = () => {
         setCurrentSlide(currentIndex);
         setPlayingVideo(null);
         setShowRotateIcon(false);
+        setShowVideo(false);
         // Pausa todos los videos
         videoRefs.current.forEach((video) => {
             if (video && !video.paused) {
@@ -99,6 +101,10 @@ const WorkPage = () => {
                 video.currentTime = 0;
             }
         });
+        // Retrasa la aparición del video para evitar el flash
+        setTimeout(() => {
+            setShowVideo(true);
+        }, 250); // 250ms de retraso
     };
 
     const handlePlayVideo = (index: number) => {
@@ -129,13 +135,15 @@ const WorkPage = () => {
                     onSlideChange={handleSlideChange}
                     onSwiper={(swiper) => {
                         swiperRef.current = swiper;
+                        // Mostrar el video en el primer render
+                        setTimeout(() => setShowVideo(true), 250);
                     }}
                 >
                     {projects.map((project, index) => (
                         <SwiperSlide key={index} className="relative min-h-[100dvh]">
                             {/* Background Media */}
                             <div className="absolute inset-0 z-0">
-                                {project.video ? (
+                                {project.video && showVideo ? (
                                     <div className="w-full h-full relative">
                                         <video
                                             ref={(el) => {
@@ -150,7 +158,6 @@ const WorkPage = () => {
                                         >
                                             <source src={project.video} type="video/mp4" />
                                         </video>
-                                        
                                         {/* Overlay invisible para capturar clicks cuando el video está reproduciéndose */}
                                         {playingVideo === index && (
                                             <div 
@@ -166,7 +173,7 @@ const WorkPage = () => {
                                             />
                                         )}
                                     </div>
-                                ) : project.image ? (
+                                ) : project.image && showVideo ? (
                                     <Image
                                         src={project.image}
                                         alt={project.title}
@@ -198,9 +205,9 @@ const WorkPage = () => {
                                     y: playingVideo !== index ? 0 : 30
                                 }}
                                 transition={{ duration: 0.6, ease: "easeInOut" }}
-                                className={
-                                  `flex items-start ${typeof window !== 'undefined' && window.innerWidth >= 768 ? 'md:absolute md:inset-0 md:overflow-y-hidden z-20' : 'relative z-30'}`
-                                }
+                                                                className={
+                                                                    `flex items-start ${!isMobile ? 'md:absolute md:inset-0 md:overflow-y-hidden z-20' : 'relative z-30'}`
+                                                                }
                                 style={{ pointerEvents: playingVideo !== index ? 'auto' : 'none', minHeight: '100dvh' }}
                             >
                                 <div className="w-full p-4 md:p-8 lg:p-12 xl:p-16 lg:pt-32 min-h-[100dvh] md:min-h-0 flex items-center md:items-start">
