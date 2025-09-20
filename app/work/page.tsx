@@ -118,21 +118,21 @@ const WorkPage = () => {
         <motion.section
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, transition: { delay: 1.1, duration: 0.5, ease: "easeIn" } }}
-            className="min-h-screen flex flex-col relative"
+            className="min-h-[100dvh] flex flex-col relative"
         >
             {/* Full screen slider container */}
             <div className="flex-1 relative">
                 <Swiper 
                     spaceBetween={0} 
                     slidesPerView={1} 
-                    className="h-screen w-full md:h-screen"
+                    className="min-h-[100dvh] w-full md:min-h-0"
                     onSlideChange={handleSlideChange}
                     onSwiper={(swiper) => {
                         swiperRef.current = swiper;
                     }}
                 >
                     {projects.map((project, index) => (
-                        <SwiperSlide key={index} className="relative">
+                        <SwiperSlide key={index} className="relative min-h-[100dvh]">
                             {/* Background Media */}
                             <div className="absolute inset-0 z-0">
                                 {project.video ? (
@@ -198,10 +198,12 @@ const WorkPage = () => {
                                     y: playingVideo !== index ? 0 : 30
                                 }}
                                 transition={{ duration: 0.6, ease: "easeInOut" }}
-                                className="absolute inset-0 z-20 flex items-start overflow-y-auto md:overflow-y-hidden"
-                                style={{ pointerEvents: playingVideo !== index ? 'auto' : 'none' }}
+                                className={
+                                  `flex items-start ${typeof window !== 'undefined' && window.innerWidth >= 768 ? 'md:absolute md:inset-0 md:overflow-y-hidden z-20' : 'relative z-30'}`
+                                }
+                                style={{ pointerEvents: playingVideo !== index ? 'auto' : 'none', minHeight: '100dvh' }}
                             >
-                                <div className="w-full p-4 md:p-8 lg:p-12 xl:p-16 lg:pt-32 min-h-screen md:min-h-0 flex items-center md:items-start">
+                                <div className="w-full p-4 md:p-8 lg:p-12 xl:p-16 lg:pt-32 min-h-[100dvh] md:min-h-0 flex items-center md:items-start">
                                     <div className="container mx-auto">
                                         <div className="grid lg:grid-cols-2 gap-8 md:gap-28 items-start">
                                             {/* Project info */}
