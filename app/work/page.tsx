@@ -13,9 +13,29 @@ import RotateDeviceIcon from "@/components/RotateDeviceIcon";
 
 
 const projects = [
+
     {
         num: "01",
-        category: "Blockchain DApp",
+        category: "DEFI-Full Stack Development",
+        title: "Oaksoft Digital Fund",
+        description: "Architected and developed an end-to-end decentralized finance application from scratch. The platform combines a pixel-perfect Next.js frontend with a robust Node.js backend, offering users a comprehensive all-in-one crypto experience.\n\nKey Features & Integrations: Crypto Loans Engine, Web3 Authentication, Cross-Chain Trading, Fiat On-Ramp, Market Analytics, User Dashboard.",        
+        video: "/assets/CreateLoan.mp4",
+        poster: "/assets/RealEstateDapp.jpg",
+        stack: [
+            {name: "Next.js"},
+            {name: "Node.js"},
+            {name: "Firebase"},
+            {name: "WalletConnect"},
+            {name: "LI.FI"},
+            {name: "Koywe"},
+            {name: "TradingView"},
+        ],
+        live: "https://oaksoftcapital.vercel.app/",
+        github: ""
+    },
+    {
+        num: "02",
+        category: "DEFI - Blockchain Development",
         title: "Professional Crowdfunding Platform",
         description: "A fully decentralized crowdfunding application built on the blockchain. It features a sleek, modern dashboard to create, edit, and manage fundraising campaigns. Users can also create and remove custom funding tiers, offering a flexible and professional solution for project creators and backers alike.",
         video: "/assets/CrowdFunding.mp4",
@@ -32,7 +52,7 @@ const projects = [
         github: "https://github.com/alejoalonzo/CrowdfundingDapp"
     },
     {
-        num: "02",
+        num: "03",
         category: "DeFi - Blockchain Development",
         title: "Real Estate Dapp - Multi Party Approvals",
         description: "Decentralized purchase flow on Ethereum with on-chain escrow. Integrates MetaMask for ETH payments/signing. The Solidity contract models buyer, seller, inspector, and lender; funds only release after inspector and lender approval. Frontend in Next.js with Ethers.js/Web3, developed and tested using Hardhat.",
@@ -43,7 +63,7 @@ const projects = [
         github: "https://github.com/alejoalonzo/RealStateDapp"
     },
         {
-        num: "03",
+        num: "04",
         category: "Blockchain Development",
         title: "Chat Dapp",
         description: "A decentralized chat app where users can easily connect their wallet and perform actions like creating an account, adding friends, and sending messages. All interactions are securely stored on the blockchain and optimized to minimize transaction costs. The interface is fast, clean, and designed for a smooth user experience.",
@@ -54,7 +74,7 @@ const projects = [
         github: "https://github.com/alejoalonzo/ChatDApp"
     },
     {
-        num: "04",
+        num: "05",
         category: "Frontend Development",
         title: "Weather App",
         description: "Modern UI weather application featuring sleek design and real-time weather data integration through external API.",
@@ -241,7 +261,7 @@ const WorkPage = () => {
                                                     <h1 className="text-2xl md:text-5xl font-extrabold text-white leading-tight">
                                                         {currentProject.title}
                                                     </h1>
-                                                    <p className="text-white/60 leading-relaxed max-w-2xl text-sm md:text-base">
+                                                    <p className="whitespace-pre-line text-white/60 leading-relaxed max-w-2xl text-sm md:text-base">
                                                         {currentProject.description}
                                                     </p>
                                                 </div>
