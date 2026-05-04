@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     siteName: 'Alejandro Alonzo Portfolio',
     images: [
       {
-        url: '/og-image.jpg', // Make sure to add an image at public/og-image.jpg
+        url: '/og-image.png', // Make sure to add an image at public/og-image.png
         width: 1200,
         height: 630,
         alt: 'Alejandro Alonzo Portfolio Preview',
