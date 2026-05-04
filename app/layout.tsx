@@ -23,10 +23,43 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Alejandro | Web 3 Developer",
+  // Base URL for relative links in metadata 
+  metadataBase: new URL('https://alejandroalonzo.com'),
+  // Title template dynamically adds the site name to specific pages
+  title: {
+    default: 'Alejandro Alonzo | Full-Stack & Blockchain Developer',
+    template: '%s | Alejandro Alonzo Portfolio',
+  },
   description: "Portfolio of Alejandro, a Web 3 Developer specializing in smart contracts, blockchain integration, and web development.",
+  // Relevant keywords for search engines
+  keywords: ['Web Development', 'Blockchain', 'Smart Contracts', 'SEO Services', 'Next.js', 'Firebase', 'React', 'Angular', 'full stack'],
   icons: {
     icon: '/assets/faviconAle.png',
+  },
+
+  // Open Graph metadata for social media sharing (LinkedIn, Twitter, etc.)
+  openGraph: {
+    title: 'Alejandro Alonzo | Full-Stack & Blockchain Developer',
+    description: 'Specializing in Web3, modern web architecture, and technical SEO.',
+    url: 'https://alejandroalonzo.com',
+    siteName: 'Alejandro Alonzo Portfolio',
+    images: [
+      {
+        url: '/og-image.jpg', // Make sure to add an image at public/og-image.jpg
+        width: 1200,
+        height: 630,
+        alt: 'Alejandro Alonzo Portfolio Preview',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  // Twitter specific metadata
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Alejandro Alonzo | Web & Blockchain Developer',
+    description: 'Specializing in Web3, modern web architecture, and technical SEO.',
+    // creator: '@yourTwitterHandle',
   },
 };
 

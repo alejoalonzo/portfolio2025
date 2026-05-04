@@ -149,7 +149,7 @@ const ContactPage = () => {
                                         <SelectItem value="smart-contract">Smart Contract Development</SelectItem>
                                         <SelectItem value="blockchain">Blockchain Integration</SelectItem>
                                         <SelectItem value="web">Web Development</SelectItem>
-                                        <SelectItem value="ui">Ui Development</SelectItem>
+                                        <SelectItem value="seo">SEO Services</SelectItem>
                                     </SelectGroup>
                                 </SelectContent>
                             </Select>

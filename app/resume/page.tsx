@@ -22,7 +22,7 @@ import { motion } from 'framer-motion';
 // About me Data
 const about = {
     title: "About Me",
-    description: "I am a passionate web developer with a focus on blockchain technologies. I have experience in building decentralized applications using Solidity, Web3.js, and various front-end frameworks like React and Angular. My goal is to create innovative solutions that leverage the power of blockchain.",
+    description: "I am a passionate web developer with a focus on blockchain technologies. I have experience in building decentralized applications using Solidity, Web3.js, and various modern frameworks like React, Next.js, and Angular. My goal is to create innovative solutions that leverage the power of blockchain and modern web architecture.",
     info:[
     { fieldName: "Name", fieldValue: "Alejandro Alonzo" },
     { fieldName: "Phone", fieldValue: "+1 (626) 243-6274" },
@@ -37,7 +37,7 @@ const about = {
 const experience = {
     icon: SiBlockchaindotcom,
     title: "My Experience",
-    description: "As a full-stack developer with over 4 years of experience, I have mastered technologies like Angular, Node.js, React, and TypeScript to build robust web applications. Currently, I'm focused on developing innovative blockchain tools and decentralized applications, combining my full-stack expertise with cutting-edge Web3 technologies to create scalable solutions for the future of digital interaction.",
+    description: "As a full-stack developer with over 4 years of experience, I have mastered technologies like Angular, Node.js, React, Next.js, Firebase, and TypeScript to build robust web applications. Currently, I'm focused on developing innovative blockchain tools and decentralized applications, combining my full-stack expertise with cutting-edge Web3 technologies to create scalable solutions for the future of digital interaction.",
     items: [
         {
             company: "Freelance",
@@ -73,7 +73,7 @@ const education = {
         {
             institution: "Online - Self-taught",
             degree: "Smart Contracts & Web3 Blockchain Developer",
-            duration: "2025 - Present (Month 8 of 12)",
+            duration: "2025 - 2026",
         },
         {
             institution: "Udemy",
@@ -101,7 +101,7 @@ const education = {
 // Skills Data
 const skills = {
     title: "My Skills",
-    description: "I possess a diverse skill set that encompasses both front-end and back-end development. My expertise includes Angular, Node.js, React, TypeScript, and blockchain technologies. I am committed to continuous learning and staying updated with the latest industry trends.",
+    description: "I possess a diverse skill set that encompasses both front-end and back-end development. My expertise includes Angular, Node.js, React, Next.js, Firebase, TypeScript, and blockchain technologies. I am committed to continuous learning and staying updated with the latest industry trends.",
     items: [
         {
             icon: <SiBlockchaindotcom />,
