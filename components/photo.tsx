@@ -2,53 +2,7 @@
 
 import { motion }   from "framer-motion";
 import Image from "next/image";
-import { useState, useEffect } from "react";
-
-
 const Photo = () => {
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) {
-    return (
-      <div className="relative w-full h-full flex justify-center items-center">
-        <div className="relative flex justify-center items-center">
-          {/* Círculo estático para el estado no montado */}
-          <svg
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] xl:w-[520px] xl:h-[520px] z-20"
-            viewBox="0 0 520 520"
-          >
-            <circle
-              cx="260"
-              cy="260"
-              r="250"
-              stroke="#00ff99"
-              strokeWidth="2"
-              fill="none"
-              strokeDasharray="15 25 8 40 20 15 30 10"
-              strokeLinecap="round"
-            />
-          </svg>
-          
-          {/* Imagen */}
-          <div className="w-[298px] h-[298px] xl:w-[498px] xl:h-[498px] relative z-10 flex justify-center items-center transform -translate-y-2 xl:translate-y-0">
-            <Image
-              src="/assets/alejandro.png"
-              alt="Home Developer Photo"
-              width={498}
-              height={498}
-              className="object-contain w-full h-full"
-              priority 
-              quality={100}
-            />
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="relative w-full h-full flex justify-center items-center">

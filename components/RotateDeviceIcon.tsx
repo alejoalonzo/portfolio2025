@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 interface RotateDeviceIconProps {
   show: boolean;
@@ -9,14 +9,10 @@ interface RotateDeviceIconProps {
 }
 
 const RotateDeviceIcon = ({ show, onHide }: RotateDeviceIconProps) => {
-  const [isVisible, setIsVisible] = useState(false);
-
   useEffect(() => {
     if (show) {
-      setIsVisible(true);
       // Auto-hide after 3 seconds
       const timer = setTimeout(() => {
-        setIsVisible(false);
         onHide?.();
       }, 3000);
 
@@ -26,7 +22,7 @@ const RotateDeviceIcon = ({ show, onHide }: RotateDeviceIconProps) => {
 
   return (
     <AnimatePresence>
-      {isVisible && (
+      {show && (
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}

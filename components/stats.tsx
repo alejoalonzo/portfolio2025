@@ -26,6 +26,7 @@ const Stats = () => {
   const statsRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    const element = statsRef.current;
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -37,13 +38,13 @@ const Stats = () => {
       { threshold: 0.3 } // Activa cuando el 30% del componente es visible
     );
 
-    if (statsRef.current) {
-      observer.observe(statsRef.current);
+    if (element) {
+      observer.observe(element);
     }
 
     return () => {
-      if (statsRef.current) {
-        observer.unobserve(statsRef.current);
+      if (element) {
+        observer.unobserve(element);
       }
     };
   }, [startCounting]);
