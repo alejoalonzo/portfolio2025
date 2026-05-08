@@ -1,22 +1,12 @@
-"use client";
+// app/page.tsx
 
 import Photo from "@/components/photo";
 import Social from "@/components/social";
 import Stats from "@/components/stats";
-import { Button } from "@/components/ui/button";
-import { FiDownload } from "react-icons/fi";
+import DownloadButton from "@/components/DownloadButton"; // <-- Importamos tu nuevo Client Component
 
 const Home = () => {
-  const handleDownloadCV = () => {
-    const link = document.createElement('a');
-    link.href = '/assets/ResumeAlejandro.pdf'; 
-    link.download = 'Alejandro_Alonzo_Resume.pdf'; 
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
-  // JSON-LD schema to define your identity and services for search engines
+  // JSON-LD schema (se mantiene igual, funciona perfecto en Server Components)
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -29,7 +19,6 @@ const Home = () => {
 
   return (
     <section className="h-full -mt-10">
-      {/* Inject JSON-LD structured data into the DOM for SEO */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -53,15 +42,10 @@ const Home = () => {
               and smart contracts for the Web3 ecosystem.
             </p>
             <div className="flex flex-col xl:flex-row items-center gap-8">
-              <Button 
-                variant="outline" 
-                size="lg" 
-                className="uppercase flex items-center gap-2 bg-transparent border-[#00ff99] text-[#00ff99] hover:bg-[#00ff99] hover:text-black cursor-pointer"
-                onClick={handleDownloadCV}
-              >
-                Download CV
-                <FiDownload className="text-xl" />
-              </Button>
+              
+              {/* Aquí usamos tu nuevo componente interactivo */}
+              <DownloadButton />
+
               <div className="mb-8 xl:mb-0">
                 <Social containerStyles="flex gap-6" iconStyles="w-10 h-10 border border-[#00ff99] bg-transparent rounded-full flex justify-center items-center text-[#00ff99] text-xl hover:bg-[#00ff99] hover:text-black"/>
               </div>
