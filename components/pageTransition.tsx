@@ -14,23 +14,23 @@ const PageTransition = ({ children }: PageTransitionProps) => {
 
     return (
         <AnimatePresence mode="wait">
-            <div key={pathname} className="min-h-[100svh] w-full">
+            <div key={pathname} className="min-h-[100svh] w-full flex flex-col">
                 
-                {/* Efecto de escaleras */}
+                {/* Stair effect */}
                 <StairTransition />
                 
-                {/* Contenido de la página con animación */}
+                {/* Page content */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ 
                         opacity: 1,
                         transition: {
-                            delay: 1,
-                            duration: 0.4,
+                            delay: 0.2, // Starts quickly to satisfy PageSpeed
+                            duration: 1.2, // Extended duration for a much smoother, elegant fade-in
                             ease: "easeInOut"
                         }
                     }}
-                    className={`min-h-[100svh] w-full ${pathname === '/work' ? '' : 'pt-20'}`}
+                    className={`flex-grow w-full ${pathname === '/work' ? '' : 'pt-20'}`}
                 >
                     {children}
                 </motion.div>

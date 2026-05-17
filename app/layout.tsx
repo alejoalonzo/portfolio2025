@@ -1,25 +1,31 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { JetBrains_Mono } from "next/font/google";
+// Grouped imports for cleaner code
+import { Geist, Geist_Mono, JetBrains_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import PageTransition from "@/components/pageTransition";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-// import StairTransition from "@/components/stairTransition";
 import "./globals.css";
 
+// Added display: "swap" to prevent Flash of Invisible Text (FOIT) and improve FCP
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap", 
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
 });
+
+// Loading 8 weights blocks FCP. Remove the ones you don't use in your CSS (e.g., keep only 300, 400, 700).
+// Added display: "swap" for instant text rendering
 const jetBrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800"], 
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -36,7 +42,6 @@ export const metadata: Metadata = {
   icons: {
     icon: '/assets/faviconAle.png',
   },
-
   // Open Graph metadata for social media sharing (LinkedIn, Twitter, etc.)
   openGraph: {
     title: 'Alejandro Alonzo | Full-Stack & Blockchain Developer',
@@ -45,7 +50,7 @@ export const metadata: Metadata = {
     siteName: 'Alejandro Alonzo Portfolio',
     images: [
       {
-        url: '/og-image.png', // Make sure to add an image at public/og-image.png
+        url: '/og-image.png', 
         width: 1200,
         height: 630,
         alt: 'Alejandro Alonzo Portfolio Preview',
@@ -59,7 +64,6 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Alejandro Alonzo | Web & Blockchain Developer',
     description: 'Specializing in Web3, modern web architecture, and technical SEO.',
-    // creator: '@yourTwitterHandle',
   },
 };
 
@@ -75,7 +79,6 @@ export default function RootLayout({
         suppressHydrationWarning={true}
       >
         <Header />
-        {/* <StairTransition></StairTransition> */}
         <PageTransition>{children}</PageTransition>
         <SpeedInsights />
       </body>

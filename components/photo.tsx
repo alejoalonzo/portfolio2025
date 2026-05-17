@@ -1,13 +1,13 @@
 "use client";
 
-import { motion }   from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
-const Photo = () => {
 
+const Photo = () => {
   return (
     <div className="relative w-full h-full flex justify-center items-center">
         <motion.div className="relative flex justify-center items-center">
-            {/* Círculo animado con borde discontinuo */}
+            {/* Animated circle with dashed border */}
             <motion.svg
               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] xl:w-[520px] xl:h-[520px] z-20"
               viewBox="0 0 520 520"
@@ -56,7 +56,7 @@ const Photo = () => {
               />
             </motion.svg>
             
-            {/* Imagen */}
+            {/* Developer Image */}
             <div className="w-[298px] h-[298px] xl:w-[498px] xl:h-[498px] relative z-10 flex justify-center items-center transform -translate-y-2 xl:translate-y-0">
                 <Image
                     src="/assets/alejandro.png"
@@ -64,8 +64,9 @@ const Photo = () => {
                     width={498}
                     height={498}
                     className="object-contain w-full h-full"
-                    priority 
-                    quality={100}
+                    priority // Ensures the image is preloaded by Next.js
+                    fetchPriority="high" // Instructs the browser to prioritize fetching this resource (Fixes LCP)
+                    // Removed quality={100} to reduce file size. Default (75) is visually identical but loads much faster.
                 />
             </div>
         </motion.div>

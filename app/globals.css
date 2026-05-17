@@ -3,7 +3,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Definir colores personalizados */
+/* Define custom colors */
 .text-accent {
   color: #00ff99 !important;
 }
@@ -15,8 +15,6 @@
 .bg-primaryButton {
   background-color: #00ff99 !important;
 }
-
-
 
 @theme inline {
   --color-background: var(--background);
@@ -139,33 +137,28 @@
   body {
     @apply bg-background text-foreground;
     overflow-x: hidden;
-    max-width: 100vw;
+    /* Fixed CLS: Use 100% instead of 100vw to avoid scrollbar layout shifts */
+    width: 100%; 
   }
   html {
     overflow-x: hidden;
-    max-width: 100vw;
+    /* Fixed CLS: Use 100% instead of 100vw */
+    width: 100%;
     height: 100%;
   }
-  .h1{
+  .h1 {
     @apply text-[48px] xl:text-[80px] leading-[1.1] font-semibold;
   }
-    .h2{
+  .h2 {
     @apply text-[36px] xl:text-[48px] leading-[1.1] font-semibold;
   }
-    .h3{
+  .h3 {
     @apply text-[20px] xl:text-[24px] leading-[1.1] font-semibold;
   }
-
 }
 
-/* Mobile margin for all pages */
-@media (max-width: 1279px) {
-
-  
-  * {
-    max-width: 100%;
-  }
-}
+/* Removed the dangerous media query that applied max-width: 100% to EVERYTHING. 
+   Tailwind preflight handles image responsiveness natively. */
 
 /* Slider border accent */
 .slider-border-accent {

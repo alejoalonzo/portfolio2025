@@ -1,15 +1,17 @@
 "use client";
 
-import Link from "next/dist/client/link";
+// Fixed import: Always use "next/link" instead of the internal dist path to avoid hydration and layout issues
+import Link from "next/link";
 import { Button } from "@/components/ui/button"; 
 
 // loadComponents
-import Nav from "./nav"; // Assuming you have a Nav component
+import Nav from "./nav"; 
 import MobileNav from "./mobileNavWrapper";
 
 const Header = () => {
   return (
-    <header className="py-8 xl:py-12 text-white">
+    // Added min-height classes to reserve exact space and prevent CLS when rendering
+    <header className="py-8 xl:py-12 text-white min-h-[96px] xl:min-h-[128px]">
         <div className="container mx-auto flex justify-between items-center px-4 xl:px-0">
             {/* logo */}
           <Link href="/" >
