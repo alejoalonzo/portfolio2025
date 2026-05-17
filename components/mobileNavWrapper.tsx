@@ -3,11 +3,15 @@
 import dynamic from "next/dynamic";
 import { HiOutlineMenu } from "react-icons/hi";
 
-// Importar dinámicamente el MobileNav para evitar problemas de hidratación
+// Dynamically import MobileNav to avoid hydration issues
 const MobileNav = dynamic(() => import("./mobileNav"), {
   ssr: false,
   loading: () => (
-    <button className="flex flex-col justify-center items-center">
+    // A11y Fix: Added aria-label so screen readers announce this as a menu button
+    <button 
+      className="flex flex-col justify-center items-center"
+      aria-label="Open mobile menu"
+    >
       <HiOutlineMenu size={32} color="#00ff99" />
     </button>
   ),

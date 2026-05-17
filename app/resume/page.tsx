@@ -7,18 +7,6 @@ import { Tooltip, TooltipProvider, TooltipTrigger, TooltipContent } from "@/comp
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { motion } from 'framer-motion';
 
-
-// const skillsIcons = [
-//   { Icon: SiSolidity, name: 'Solidity' },
-//     { Icon: FaHardHat, name: 'Hardhat' },
-//   { Icon: SiWeb3Dotjs, name: 'Web3' },
-//   { Icon: SiAngular, name: 'Angular' },
-//   { Icon: SiReact, name: 'Next.js / React' },
-//   { Icon: SiTypescript, name: 'TypeScript' },
-//   { Icon: SiIpfs, name: 'IPFS' },
-//   { Icon: SiBlockchaindotcom, name: 'Blockchain.com' },
-// ]
-
 // About me Data
 const about = {
     title: "About Me",
@@ -144,7 +132,8 @@ const ResumePage = () => {
     return (
         <motion.div 
         initial={{ opacity: 0 }} 
-        animate={{ opacity: 1, transition: { delay: 1.1, duration: 0.4, ease: "easeIn" } }} 
+        // Performance Fix: Reduced delay from 1.1s to 0.2s to unblock FCP
+        animate={{ opacity: 1, transition: { delay: 0.2, duration: 0.4, ease: "easeIn" } }} 
         className='min-h-[80vh] flex items-center justify-center py-12 xl:py-0 -mt-20 xl:mt-0'
         >
             <div className="container mx-auto">
@@ -175,7 +164,6 @@ const ResumePage = () => {
                             About Me
                         </TabsTrigger>
                     </TabsList>
-
 
                     {/* Content */}
                     <div className="min-h-[70vh] w-full">
@@ -237,8 +225,15 @@ const ResumePage = () => {
                                         return <li key={index}>
                                             <TooltipProvider delayDuration={100}>
                                                 <Tooltip>
-                                                    <TooltipTrigger className='w-full h-[150px] bg-[#232329] rounded-xl flex items-center justify-center group'>
-                                                        <div className='text-6xl group-hover:text-[#00ff99] transition-all duration-300'>{skill.icon}</div>
+                                                    {/* A11y Fix: Added aria-label for screen readers */}
+                                                    <TooltipTrigger 
+                                                        aria-label={`${skill.name} skill`}
+                                                        className='w-full h-[150px] bg-[#232329] rounded-xl flex items-center justify-center group'
+                                                    >
+                                                        {/* A11y Fix: Hide decorative icon from screen readers */}
+                                                        <div className='text-6xl group-hover:text-[#00ff99] transition-all duration-300' aria-hidden="true">
+                                                            {skill.icon}
+                                                        </div>
                                                     </TooltipTrigger>
                                                     <TooltipContent className="bg-white text-black border-white [&>svg]:fill-white">
                                                         <p className='capitalize'>{skill.name}</p>
@@ -274,6 +269,5 @@ const ResumePage = () => {
         </motion.div>
     );
 }
-
 
 export default ResumePage;

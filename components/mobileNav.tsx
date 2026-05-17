@@ -28,7 +28,11 @@ const MobileNav = () => {
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
-        <button className="flex flex-col justify-center items-center">
+        {/* A11y Fix: Added aria-label for screen readers to identify the Radix trigger */}
+        <button 
+          className="flex flex-col justify-center items-center" 
+          aria-label="Open navigation menu"
+        >
           <HiOutlineMenu size={32} color="#00ff99" />
         </button>
       </SheetTrigger>
@@ -47,7 +51,7 @@ const MobileNav = () => {
           </Link>
         </div>
 
-        {/* Navegación */}
+        {/* Navigation links */}
         <nav className="flex flex-col gap-8 pl-6">
           {navLinks.map((link, index) => {
             const Icon = link.icon;

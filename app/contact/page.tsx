@@ -94,7 +94,8 @@ const ContactPage = () => {
     return (
         <motion.section
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1, transition: { delay: 1.1, duration: 0.5, ease: "easeIn" } }}
+            // Performance Fix: Reduced delay from 1.1s to 0.2s to unblock FCP
+            animate={{ opacity: 1, transition: { delay: 0.2, duration: 0.5, ease: "easeIn" } }}
             className="py-6 -mt-20 xl:mt-0"
         >
             {/* Toast Notification */}
@@ -121,12 +122,16 @@ const ContactPage = () => {
                                 }
                             </p>
                             <Input 
+                                // A11y Fix: Added aria-label for screen readers
+                                aria-label="Your Name"
                                 placeholder="Your Name" 
                                 value={formData.name}
                                 onChange={(e) => setFormData({...formData, name: e.target.value})}
                                 required
                             />
                             <Input 
+                                // A11y Fix: Added aria-label for screen readers
+                                aria-label="Your Email"
                                 placeholder="Your Email" 
                                 type="email"
                                 value={formData.email}
@@ -134,13 +139,16 @@ const ContactPage = () => {
                                 required
                             />
                             <Textarea 
+                                // A11y Fix: Added aria-label for screen readers
+                                aria-label="Your Message"
                                 placeholder="Your Message" 
                                 value={formData.message}
                                 onChange={(e) => setFormData({...formData, message: e.target.value})}
                                 required
                             /> 
                             <Select onValueChange={(value) => setFormData({...formData, service: value})}>
-                                <SelectTrigger className="w-full focus:border-[#00ff99]">
+                                {/* A11y Fix: Added aria-label for the dropdown trigger */}
+                                <SelectTrigger aria-label="Select a service" className="w-full focus:border-[#00ff99]">
                                     <SelectValue placeholder="Select a service" />
                                 </SelectTrigger>
                                 <SelectContent>
@@ -165,7 +173,8 @@ const ContactPage = () => {
                                 return(
                                     <li key={index} className="flex items-center gap-6">
                                         <div className="w-[52px] h-[52px] xl:w-[72px] xl:h-[72px] bg-[#27272c] text-[#00ff99] rounded-md flex items-center justify-center">
-                                            <div className="text-[28px]">
+                                            {/* A11y Fix: Hidden decorative icon from screen readers */}
+                                            <div className="text-[28px]" aria-hidden="true">
                                                 <item.icon />
                                             </div>
                                         </div>

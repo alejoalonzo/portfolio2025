@@ -3,10 +3,13 @@
 import Photo from "@/components/photo";
 import Social from "@/components/social";
 import Stats from "@/components/stats";
-import DownloadButton from "@/components/DownloadButton"; // <-- Importamos tu nuevo Client Component
+import DownloadButton from "@/components/DownloadButton"; 
+
+// Force Next.js to statically generate this page at build time to drop TTFB to milliseconds
+export const dynamic = "force-static";
 
 const Home = () => {
-  // JSON-LD schema (se mantiene igual, funciona perfecto en Server Components)
+  // JSON-LD schema remains the same
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -43,7 +46,6 @@ const Home = () => {
             </p>
             <div className="flex flex-col xl:flex-row items-center gap-8">
               
-              {/* Aquí usamos tu nuevo componente interactivo */}
               <DownloadButton />
 
               <div className="mb-8 xl:mb-0">
@@ -51,7 +53,7 @@ const Home = () => {
               </div>
             </div>
           </div>  
-          {/* photo */}     
+          {/* photo */}    
           <div className="order-1 xl:order-none mb-8 xl:mb-0">
             <Photo />
           </div>
