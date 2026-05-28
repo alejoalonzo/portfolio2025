@@ -32,9 +32,6 @@ export const metadata: Metadata = {
   },
   description: "Portfolio of Alejandro, a Web 3 Developer specializing in smart contracts, blockchain integration, and web development.",
   keywords: ['Web Development', 'Blockchain', 'Smart Contracts', 'SEO Services', 'Next.js', 'Firebase', 'React', 'Angular', 'full stack'],
-  icons: {
-    icon: '/assets/faviconAle.png',
-  },
   openGraph: {
     title: 'Alejandro Alonzo | Full-Stack & Blockchain Developer',
     description: 'Specializing in Web3, modern web architecture, and technical SEO.',
